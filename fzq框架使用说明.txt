@@ -1,0 +1,117 @@
+本人申明 此框架仅供学习 谢谢 
+
+
+因技术原因此框架有很多不足 
+
+      ***************因路由原因请放到根目录下使用*****************8888
+
+
+欢迎各位朋友指点或咨询 邮箱 m18811126599@163.com qq 896956692 
+
+
+简单介绍下目录结构
+
+	app   项目目录
+ 
+	     -----home 前台   可删除修改
+		
+             -----admin 后台  可删除修改
+
+	    ------public 跳转提示页面  不可删除可修改页面内容
+
+	core  核心文件目录
+
+	     -----common  公共文件目录 公共方法
+	     
+	     ------config  配置文件目录
+
+	     ------lib     核心类库文件目录
+            
+             ------fzq     核心文件
+
+	log  日志目录
+	
+             ------twig   模板引擎 编译目录
+	
+	static 静态文件目录
+
+	vendor composer 目录
+	
+
+-.路由支持两种模式
+	1.普通参数模式  
+	2.pathinfo 模式
+		修改 /core/config/route.php   路由配置文件
+		return array(
+			'module'=>'home',       默认模块
+			'ctrl'=>'index',	默认控制器
+			'action'=>'index',	默认方法
+			'mode'=>0		0 为普通参数模式 1为pathinfo 模式
+		);
+
+二.日志系统 
+	支持两种数据存储方式 1.文件存储 2 数据库存储
+	修改 /core/config/log.php   日志配置文件
+	return array(
+		'DRIVE'=>'file',   //记录日志方式 file 文件模式   mysql 数据库模式
+		'OPTION'=>array(
+				//'DBNAME'=>'p_log',  //数据库模式 存储日志表
+				//'CONTENT'=>'content' //数据库模式 存储日志内容字段
+				'PATH'=> FZQ.'/log/',  //文件模式 设置存储日志目录
+				'FILE'=>'log'           //文件模式 设置存储日志名称
+			)
+	);
+三. 数据库增删改查
+	
+	1.use core\lib\model; 	//引入model类
+	
+	2. $model = new model(); //实例化对象
+
+	3. 本框架 引入了 medoo 数据库框架 具体操作 可见 http://medoo.lvtao.net/doc.php 
+
+四.模板引擎 
+	
+	模板引擎使用了 twig 欢迎小伙伴们一起研究
+
+	基本使用教程  英文版 http://blog.csdn.net/maray/article/details/40780167  比较全
+
+		      官方首页 http://twig.sensiolabs.org/ 
+
+五. 页面跳转 
+	
+	添加了T方法 
+		
+		$this->T('/admin/user/login','您还未登陆?',3,1);
+
+		参数说明('路径','提示信息','跳转等待时间','1是成功 0是失败')
+
+		和tp error success 方法差不多 只是整合在一起了
+
+
+
+六.缓存
+
+	待开发中..............
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
